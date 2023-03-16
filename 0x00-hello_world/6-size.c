@@ -2,6 +2,7 @@
 
 /**
  * main - prints the size of basic types in c
+ * Return: void
  */
 int main(void)
 {
