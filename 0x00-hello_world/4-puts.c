@@ -2,7 +2,6 @@
 
 /**
  * main - prints a string
- * @parameterx: none
  * Return:  coind
  */
 int main(void)
