@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * this is a function that prints the size of basic types in c
+ * main - prints the size of basic types in c
  */
 int main(void)
 {
