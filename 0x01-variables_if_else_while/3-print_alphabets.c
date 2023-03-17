@@ -14,7 +14,7 @@ putchar(a);
 a += 1;
 }
 a = 'A';
-while (a <= 'z')
+while (a <= 'Z')
 {
 putchar(a);
 a += 1;
