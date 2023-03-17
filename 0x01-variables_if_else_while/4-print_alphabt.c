@@ -12,6 +12,7 @@ while (a <= 'z')
 {
 if (a == 'q' || a == 'e')
 {
+a += 1;
 continue;
 }
 putchar(a);
