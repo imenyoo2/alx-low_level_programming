@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-char arr[7];
+int arr[7];
 int ones;
 int tens;
 int i;
