@@ -1,5 +1,6 @@
 /**
  * _islower - check if c is a lower case char
+ * @c: the ASCII code of the character
  * Return: 1 if true otherwise 0
  */
 int _islower(int c)

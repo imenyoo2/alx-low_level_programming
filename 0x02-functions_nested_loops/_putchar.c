@@ -3,6 +3,7 @@
 
 /**
  * _putchar - clone of putchar
+ * @c: the ASCII code of the character
  * Return: void
  */
 void _putchar(char c)
