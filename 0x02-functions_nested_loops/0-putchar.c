@@ -7,4 +7,5 @@
 int main(void)
 {
 	printf("%s", "_putchar");
+	return 0;
 }
