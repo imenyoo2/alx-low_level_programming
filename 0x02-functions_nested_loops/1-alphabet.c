@@ -2,5 +2,5 @@
 
 void print_alphabet(void)
 {
-	printf("%s\n", "_putchar");
+	printf("abcdefghijklmnopqrstuvwxyz\n");
 }
