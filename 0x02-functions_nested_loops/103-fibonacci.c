@@ -10,7 +10,6 @@ int main(void)
 	unsigned long int n1;
 	unsigned long int n2;
 	unsigned long int buffer;
-	int i;
 
 	printf("1, 2");
 	n1 = 1;
