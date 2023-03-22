@@ -7,18 +7,18 @@
  */
 int main(void)
 {
-	unsigned int n1;
-	unsigned int n2;
-	unsigned int buffer;
+	unsigned long int n1;
+	unsigned long int n2;
+	unsigned long int buffer;
 	int i;
 
 	printf("1, 2");
 	n1 = 1;
-	n1 = 2;
-	for (i = 0; i < 49; i++)
+	n2 = 2;
+	for (i = 0; i < 48; i++)
 	{
 		buffer = n1 + n2;
-		printf(", %u", buffer);
+		printf(", %lu", buffer);
 		n1 = n2;
 		n2 = buffer;
 	}
