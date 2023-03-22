@@ -15,7 +15,7 @@ int main(void)
 	printf("1, 2");
 	n1 = 1;
 	n2 = 2;
-	for (i = 0; i < 98; i++)
+	for (i = 0; i < 96; i++)
 	{
 		buffer = n1 + n2;
 		printf(", %lu", buffer);
