@@ -10,21 +10,22 @@ int main(void)
 	unsigned long int n1;
 	unsigned long int n2;
 	unsigned long int buffer;
+	unsigned long int sum;
 
-	printf("1, 2");
 	n1 = 1;
 	n2 = 2;
 	buffer = 0;
+	sum = 2;
 	while (buffer < 4000000)
 	{
 		buffer = n1 + n2;
 		if (!(buffer % 2))
 		{
-			printf(", %lu", buffer);
+			sum += buffer;
 		}
 		n1 = n2;
 		n2 = buffer;
 	}
-	printf("\n");
+	printf("%lu\n", sum);
 	return (0);
 }
