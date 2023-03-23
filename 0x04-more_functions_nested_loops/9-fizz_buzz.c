@@ -8,25 +8,25 @@ int main(void)
 {
 	int i;
 
-	for (i = 1; i <= 100; i++)
+	putchar('1');
+	for (i = 2; i <= 100; i++)
 	{
 		if (!(i % 3) && !(i % 5))
 		{
-			fputs("FizzBuzz", stdout);
+			fputs(" FizzBuzz", stdout);
 		}
 		else if (!(i % 3))
 		{
-			fputs("Fizz", stdout);
+			fputs(" Fizz", stdout);
 		}
 		else if (!(i % 5))
 		{
-			fputs("Buzz", stdout);
+			fputs(" Buzz", stdout);
 		}
 		else
 		{
-			printf("%d", i);
+			printf(" %d", i);
 		}
-		putchar(' ');
 	}
 	putchar('\n');
 
