@@ -18,7 +18,7 @@ int main(void)
 		{
 			fputs("Fizz", stdout);
 		}
-		else if (!(i % 4))
+		else if (!(i % 5))
 		{
 			fputs("Buzz", stdout);
 		}
