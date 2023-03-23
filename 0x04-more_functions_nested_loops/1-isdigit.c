@@ -1,3 +1,4 @@
+#include "main.h"
 
 /**
  * _isdigit - checks if c is a digite
