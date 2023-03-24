@@ -7,7 +7,7 @@
  */
 void print_number(int n)
 {
-	int firstDigit;
+	int lastDigit;
 
 	if (n < 0)
 	{
@@ -20,8 +20,8 @@ void print_number(int n)
 	}
 	else
 	{
-		firstDigit = n % 10;
+		lastDigit = n % 10;
 		print_number(n / 10);
-		_putchar('0' + firstDigit);
+		_putchar('0' + lastDigit);
 	}
 }
