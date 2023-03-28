@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * rev_string - revers s and update the value of it
+ * @s: string
+ * Return: void
+ */
 void rev_string(char *s)
 {
 	char *start = s;
