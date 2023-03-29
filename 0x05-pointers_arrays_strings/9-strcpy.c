@@ -1,5 +1,5 @@
 /**
- * _strcpy - copies the string pointed to by src, including the terminating null byte (\0), to the buffer pointed to by dest
+ * _strcpy - copies the string pointed to by src, to dest
  * @dest: the buffer
  * @src: the source string
  * Return: the pointer of the buffer
@@ -13,7 +13,7 @@ char *_strcpy(char *dest, char *src)
 		if (*src == '\0')
 		{
 			*dest = '\0';
-			return buffer;
+			return (buffer);
 		}
 		*dest = *src;
 		src++;
