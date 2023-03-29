@@ -8,7 +8,7 @@ int _atoi(char *s)
 {
 	int length = _strlen(s);
 	char *end = s + length - 1;
-	int result = 0;
+	unsigned int result = 0;
 	int sign = 0;
 	int tens = 0;
 	int i;
@@ -32,6 +32,7 @@ int _atoi(char *s)
 				result = 0;
 				reset = 0;
 				tens = 0;
+				sign = 0;
 			}
 			add = (*end - '0');
 			for (i = 0; i < tens; i++)
