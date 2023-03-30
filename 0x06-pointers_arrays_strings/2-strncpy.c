@@ -19,6 +19,7 @@ char *_strncpy(char *dest, char *src, int n)
 		else if (src[i] == '\0')
 		{
 			check = 1;
+			dest[i] = src[i];
 		}
 		else
 		{
