@@ -21,5 +21,16 @@ int _strcmp(char *s1, char *s2)
 		count2 += s2[i];
 		i++;
 	}
-	return (count1 - count2);
+	if (count1 - count2 > 0)
+	{
+		return (15);
+	}
+	else if (count1 - count2 < 0)
+	{
+		return (-15);
+	}
+	else
+	{
+		return (0);
+	}
 }
