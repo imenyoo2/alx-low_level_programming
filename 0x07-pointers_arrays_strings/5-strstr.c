@@ -27,7 +27,11 @@ char *_strstr(char *haystack, char *needle)
 		}
 		haystack++;
 	}
-	if (*query == '\0')
+	if (*needle == '\0')
+	{
+		return (haystack);
+	}
+	else if (*query == '\0')
 	{
 		return (start);
 	}
