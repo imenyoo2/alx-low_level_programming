@@ -10,7 +10,7 @@ char *_strpbrk(char *s, char *accept)
 {
 	int i;
 
-	while (1)
+	while (*s != '\0')
 	{
 		/* checking if *s is one of accept */
 		i = 0;
@@ -25,10 +25,6 @@ char *_strpbrk(char *s, char *accept)
 				break;
 			}
 			i++;
-		}
-		if (*s == '\0')
-		{
-			break;
 		}
 		s++;
 	}
