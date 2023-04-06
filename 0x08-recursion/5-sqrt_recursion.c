@@ -11,6 +11,12 @@ int _sqrt_recursion(int n)
 }
 
 
+/**
+ * _sqrt - evaluate the square root of n
+ * @n: integer
+ * @i: counter
+ * Return: int
+ */
 int _sqrt(int n, int i)
 {
 	if (i * i == n)

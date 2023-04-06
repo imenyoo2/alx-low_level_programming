@@ -17,6 +17,12 @@ int is_prime_number(int n)
 	}
 }
 
+/**
+ * is_prime - checks if n a prime number
+ * @n: number to be checked
+ * @i: counter
+ * Return: 1 if true, 0 otherwise
+ */
 int is_prime(int n, int i)
 {
 	if (i != 1)
