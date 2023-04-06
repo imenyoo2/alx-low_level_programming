@@ -1,9 +1,11 @@
 
 int _is_palindrome(char *s, int i);
+char *getEnd(char *s);
 
 /**
- * is_palindrome - checks if s is palindrome
+ * _is_palindrome - checks if s is palindrome
  * @s: string
+ * @i: counter
  * Return: 1 if true, otherwise 0
  */
 int is_palindrome(char *s)
@@ -21,14 +23,9 @@ int _is_palindrome(char *s, int i)
 {
 	char *start = s;
 	char *end;
-	char *buffer = s;
 
 	start += i;
-	while (*(buffer + 1) != '\0')
-	{
-		buffer++;
-	}
-	end = buffer;
+	end = getEnd(s);
 	end -= i;
 	if (*start != *end)
 	{
@@ -41,5 +38,22 @@ int _is_palindrome(char *s, int i)
 	else
 	{
 		return (_is_palindrome(s, i + 1));
+	}
+}
+
+/**
+ * getEnd - gets the last character of s
+ * @s: string
+ * Return: pointer to the last char in s
+ */
+char *getEnd(char *s)
+{
+	if (*(s + 1) == '\0')
+	{
+		return (s);
+	}
+	else
+	{
+		return (getEnd(s + 1));
 	}
 }
