@@ -3,9 +3,8 @@ int _is_palindrome(char *s, int i);
 char *getEnd(char *s);
 
 /**
- * _is_palindrome - checks if s is palindrome
+ * is_palindrome - checks if s is palindrome
  * @s: string
- * @i: counter
  * Return: 1 if true, otherwise 0
  */
 int is_palindrome(char *s)
