@@ -20,13 +20,13 @@ char *_strdup(char *str)
 		size++;
 	}
 	/* alocating memory */
-	new = (char *) malloc(size);
+	new = (char *) malloc(size + 1);
 	if (new == NULL)
 	{
 		return (NULL);
 	}
 	/* dumping str to new */
-	for (i = 0; i < size; i++)
+	for (i = 0; i <= size; i++)
 	{
 		new[i] = str[i];
 	}
