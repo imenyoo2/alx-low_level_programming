@@ -42,10 +42,9 @@ int min_coin_combinations(int n)
 {
 	int num_coins = 0;
 	int coin_values[] = {25, 10, 5, 2, 1};
-	int num_coin_types = sizeof(coin_values) / sizeof(coin_values[0]);
 	int i;
 
-	for (i = 0; i < num_coin_types; i++)
+	for (i = 0; i < 5; i++)
 	{
 		num_coins += n / coin_values[i];
 		n = n % coin_values[i];
