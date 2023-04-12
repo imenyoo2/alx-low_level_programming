@@ -19,7 +19,14 @@ char **strtow(char *str)
 	{
 		return (NULL);
 	}
-	arr = (char **) malloc((numOfWords(str) + 1) * sizeof(char *));
+	if (numOfWords(str) > 0)
+	{
+		arr = (char **) malloc((numOfWords(str) + 1) * sizeof(char *));
+	}
+	else
+	{
+		return (NULL);
+	}
 	if (arr == NULL)
 	{
 		return (NULL);
