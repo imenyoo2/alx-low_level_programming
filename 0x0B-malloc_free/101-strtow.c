@@ -40,7 +40,8 @@ char **strtow(char *str)
 			start = str;
 			state = 0;
 		}
-		else if ((*str == ' ' || *str == '\n' || *str == '\t' || *str == '\0') && (!state))
+		else if ((*str == ' ' || *str == '\n' || *str == '\t' || *str == '\0')
+			&& (!state))
 		{
 			end = str;
 			arr[i] = _strdump(start, end);
