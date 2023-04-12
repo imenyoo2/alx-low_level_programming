@@ -33,14 +33,14 @@ char **strtow(char *str)
 	}
 
 	i = 0;
-	while (*str != '\0')
+	while (1)
 	{
 		if ((*str != ' ' && *str != '\n' && *str != '\t') && state)
 		{
 			start = str;
 			state = 0;
 		}
-		else if ((*str == ' ' || *str == '\n' || *str == '\t' || *str == '\t') && (!state))
+		else if ((*str == ' ' || *str == '\n' || *str == '\t' || *str == '\0') && (!state))
 		{
 			end = str;
 			arr[i] = _strdump(start, end);
@@ -50,6 +50,11 @@ char **strtow(char *str)
 			}
 			state = 1;
 			i++;
+		}
+		/* breaking from the loop */
+		if (*str == '\0')
+		{
+			break;
 		}
 		str++;
 	}
