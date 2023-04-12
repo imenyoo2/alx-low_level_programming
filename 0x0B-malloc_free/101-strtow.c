@@ -15,7 +15,7 @@ char **strtow(char *str)
 	char *start;
 	char *end;
 
-	if (str == NULL || *str == '\n')
+	if (str == NULL || *str == '\0')
 	{
 		return (NULL);
 	}
