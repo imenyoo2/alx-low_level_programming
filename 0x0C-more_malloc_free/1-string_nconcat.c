@@ -26,7 +26,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		memorySize += n;
 	}
 	/* allocating memory */
-	new = malloc((memorySize + 1) * sizeof(new));
+	new = malloc((memorySize + 1) * sizeof(*new));
 	if (new == NULL)
 	{
 		free(new);
