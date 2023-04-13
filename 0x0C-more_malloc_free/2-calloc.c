@@ -8,9 +8,9 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *array;
+	char *array;
 
-	if (nmemb == 0 || size == 0)
+	if (!nmemb || !size)
 	{
 		return (NULL);
 	}
@@ -20,6 +20,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	return (array);
+	/* setting element to 0 */
+	do {
+		nmemb--;
+		array[nmemb] = 0;
+	} while (nmemb != 0);
+	return ((void *) array);
 }
 
