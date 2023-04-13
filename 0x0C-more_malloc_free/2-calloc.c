@@ -22,12 +22,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	/* setting element to 0 */
-	do
-	{
+	do {
 		nmemb--;
 		array[nmemb] = 0;
-	}
-	while (nmemb != 0);
+	} while (nmemb != 0);
 	return (array);
 }
 
