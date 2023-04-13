@@ -26,6 +26,6 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		nmemb--;
 		array[nmemb] = 0;
 	} while (nmemb != 0);
-	return (array);
+	return ((void *) array);
 }
 
