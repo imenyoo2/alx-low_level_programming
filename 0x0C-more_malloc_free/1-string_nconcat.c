@@ -26,7 +26,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		memorySize += n;
 	}
 	/* allocating memory */
-	new = malloc((memorySize + 1) * sizeof new);
+	new = malloc((memorySize + 1) * sizeof(new));
 	/* dumping content to new memory */
 	for (i = 0; i < getlen(s1); i++)
 	{
@@ -39,7 +39,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 	new[i] = '\0';
 	return (new);
-} 
+}
 
 /**
  * getlen - gets the lenght of s
