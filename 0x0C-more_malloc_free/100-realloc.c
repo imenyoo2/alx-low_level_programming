@@ -20,7 +20,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	else
 	{
 		/* allocating the new memory block */
-		array = malloc(new_size * sizeof(*array));
+		array = malloc(new_size);
 		if (array == NULL)
 		{
 			free(array);
