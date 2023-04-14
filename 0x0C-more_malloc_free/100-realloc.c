@@ -11,6 +11,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	unsigned int i;
 	char *array;
+	char *buffer = ptr;
 
 	if (new_size == old_size)
 	{
@@ -27,9 +28,9 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		}
 		for (i = 0; (i < old_size) && (i < new_size); i++)
 		{
-			array[i] = ((char *) ptr)[i];
+			array[i] = buffer[i];
 		}
-		free(ptr);
+		free(buffer);
 	}
-	return (array);
+	return ((void *) array);
 }
