@@ -1,5 +1,6 @@
 #include "dog.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * new_dog - creates a new dog instence
@@ -17,8 +18,13 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		return (NULL);
 	}
-	new->name = name;
+
+	strcpy(new->name, name);
+	strcpy(new->owner, owner);
 	new->age = age;
-	new->owner = owner;
+	/*
+	* new->name = name;
+	* new->owner = owner;
+	*/
 	return (new);
 }
