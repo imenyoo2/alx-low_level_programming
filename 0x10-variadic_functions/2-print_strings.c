@@ -26,6 +26,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			array[i] = va_arg(ap, char *);
 			if (array[i] == NULL)
 			{
+				free(array);
 				printf("(nil)\n");
 				return;
 			}
