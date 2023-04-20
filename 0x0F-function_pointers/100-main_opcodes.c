@@ -16,7 +16,17 @@ int main(int argc, char **argv)
 	unsigned int byte;
 	int size;
 
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
 	size = atoi(argv[1]);
+	if (size < 0)
+	{
+		printf("Error\n");
+		exit(2);
+	}
 	for (i = 0; i < size; i++)
 	{
 		if (counter == 4)
