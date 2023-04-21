@@ -31,13 +31,13 @@ void print_strings(const char *separator, const unsigned int n, ...)
 				return;
 			}
 		}
+		va_end(ap);
 		printf("%s", array[0]);
 		for (i = 1; i < n; i++)
 		{
 			printf("%s%s", separator, array[i]);
 		}
 		free(array);
-		va_end(ap);
 	}
 	printf("\n");
 }
