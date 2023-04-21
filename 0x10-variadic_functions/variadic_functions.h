@@ -3,4 +3,7 @@
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);
 void print_strings(const char *separator, const unsigned int n, ...);
+void print_all(const char * const format, ...);
+
+#define GETTYPE(f) (f=='c'?char:f=='i'?int:f=='f'?float:f=='s'?char *);
 #endif
