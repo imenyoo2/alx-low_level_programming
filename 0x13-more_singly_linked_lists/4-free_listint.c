@@ -9,8 +9,9 @@
 void free_listint(listint_t *head)
 {
 	listint_t *buffer = head->next;
+	listint_t *buffer2 = head;
 
-	if (head == NULL)
+	if (buffer2 == NULL)
 	{
 		return;
 	}
@@ -20,12 +21,11 @@ void free_listint(listint_t *head)
 		{
 			if (buffer == NULL)
 			{
-				free(head);
-				head = NULL;
+				free(buffer2);
 				break;
 			}
-			free(head);
-			head = buffer;
+			free(buffer2);
+			buffer2 = buffer;
 			buffer = buffer->next;
 		}
 	}
