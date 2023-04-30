@@ -6,11 +6,11 @@
  * @head: the list to be freed
  * Return: void
  */
-void free_listint2(listint_t **head)
+void free_listint(listint_t *head)
 {
-	listint_t *buffer = (*head)->next;
+	listint_t *buffer = head->next;
 
-	if (head == NULL || *head == NULL)
+	if (head == NULL || head == NULL)
 	{
 		return;
 	}
@@ -20,11 +20,11 @@ void free_listint2(listint_t **head)
 		{
 			if (buffer == NULL)
 			{
-        free(*head);
+        free(head);
 				break;
 			}
-			free(*head);
-      *head = buffer;
+			free(head);
+      head = buffer;
 			buffer = buffer->next;
 		}
 	}
