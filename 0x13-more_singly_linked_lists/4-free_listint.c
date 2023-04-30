@@ -2,7 +2,7 @@
 
 
 /**
- * free_listint2 - frees a listint_t list
+ * free_listint - frees a listint_t list
  * @head: the list to be freed
  * Return: void
  */
@@ -20,11 +20,11 @@ void free_listint(listint_t *head)
 		{
 			if (buffer == NULL)
 			{
-        free(head);
+				free(head);
 				break;
 			}
 			free(head);
-      head = buffer;
+			head = buffer;
 			buffer = buffer->next;
 		}
 	}
