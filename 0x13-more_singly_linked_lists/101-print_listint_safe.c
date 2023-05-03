@@ -17,12 +17,12 @@ size_t print_listint_safe(const listint_t *head)
 	}
 	while (head != NULL)
 	{
-		printf("[%p] %d\n", (void *) head, head->n);
+		printf("[0x%x] %d\n", *((unsigned int *) &head), head->n);
 		buffer = head;
 		head = head->next;
 		if (head > buffer)
 		{
-			printf("-> [%p] %d\n", (void *) head, head->n);
+			printf("-> [0x%x] %d\n", *((unsigned int *) &head), head->n);
 			break;
 		}
 		count++;
