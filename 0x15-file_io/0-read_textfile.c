@@ -32,12 +32,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	free(buffer);
-	if (close(fd) == -1)
-	{
-		return (0);
-	}
-	if (result2 < result)
-		return (result2);
-	else
-		return (result);
+	close(fd);
+	return (result);
 }
