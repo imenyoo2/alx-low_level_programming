@@ -198,6 +198,7 @@ void checkELF(char *buffer)
 			buffer[2] != 0x4c ||
 			buffer[3] != 0x46)
 	{
+		dprintf(2, "provided file is not ELF file\n");
 		exit(98);
 	}
 }
