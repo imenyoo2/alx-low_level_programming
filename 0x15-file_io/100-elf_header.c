@@ -50,19 +50,19 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		dprintf(2, "Usage: elf_header elf_filename\n");
+		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
 		exit(97);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(2, "provided file is not ELF file\n");
+		dprintf(STDERR_FILENO, "provided file is not ELF file\n");
 		exit(98);
 	}
 	lseek(fd, 0, SEEK_SET);
 	if (read(fd, buffer, 1024) == -1)
 	{
-		dprintf(2, "provided file is not ELF file\n");
+		dprintf(STDERR_FILENO, "provided file is not ELF file\n");
 		exit(98);
 	}
 	checkELF(buffer);
@@ -200,7 +200,7 @@ void checkELF(char *buffer)
 			buffer[2] != 0x4c ||
 			buffer[3] != 0x46)
 	{
-		dprintf(2, "provided file is not ELF file\n");
+		dprintf(STDERR_FILENO, "provided file is not ELF file\n");
 		exit(98);
 	}
 }
