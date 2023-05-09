@@ -56,11 +56,13 @@ int main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
+		dprintf(2, "provided file is not ELF file\n");
 		exit(98);
 	}
 	lseek(fd, 0, SEEK_SET);
 	if (read(fd, buffer, 1024) == -1)
 	{
+		dprintf(2, "provided file is not ELF file\n");
 		exit(98);
 	}
 	checkELF(buffer);
