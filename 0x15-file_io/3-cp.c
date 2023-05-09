@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", file_from);
 		exit(100);
-	} else if (close (file_to) == -1)
+	} else if (close(file_to) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", file_to);
 		exit(100);
