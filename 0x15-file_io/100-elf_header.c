@@ -4,9 +4,19 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <elf.h>
 
 
+/**
+ * struct elf_data - holds the data needed
+ * @Magic: the magic number
+ * @Class: class number
+ * @Data: data number
+ * @Version: Version number
+ * @OS_ABI: OS_ABI number
+ * @Type: Type number
+ * @EntryAdrr: Entry Address
+ * @ABI_Version: ABI_Version Address
+ */
 typedef struct elf_data
 {
 	unsigned int Magic[4];
@@ -24,6 +34,12 @@ void printType(unsigned int type);
 void printOS_ABI(unsigned int os);
 void parseElfStruct(elf *elf_data, char *buffer);
 
+/**
+ * main - entry point
+ * @argc: number of args passed
+ * @argv: array of args
+ * Return: alwayse 0
+ */
 int main(int argc, char **argv)
 {
 	int fd;
@@ -47,7 +63,7 @@ int main(int argc, char **argv)
 
 /**
  * printHeaderFromMagic - prints the header info based on elf_data
- * @magic: elf struct
+ * @elf_data: elf struct
  * Return: void
  */
 void printHeaderFromMagic(elf *elf_data)
@@ -72,6 +88,11 @@ void printHeaderFromMagic(elf *elf_data)
 
 }
 
+/**
+ * printOS_ABI - prints OS_ABI field
+ * @os: OS_ABI number
+ * Return: void
+ */
 void printOS_ABI(unsigned int os)
 {
 	switch (os)
@@ -90,6 +111,11 @@ void printOS_ABI(unsigned int os)
 	}
 }
 
+/**
+ * printType - print type field
+ * @type: type number
+ * Return: void
+ */
 void printType(unsigned int type)
 {
 	/*
@@ -109,6 +135,12 @@ void printType(unsigned int type)
 	}
 }
 
+/**
+ * parseElfStruct - parses data read to elf_data struct
+ * @elf_data: elf struct
+ * @buffer: data to be parsed
+ * Return: void
+ */
 void parseElfStruct(elf *elf_data, char *buffer)
 {
 	/* it's better to print magic here */
