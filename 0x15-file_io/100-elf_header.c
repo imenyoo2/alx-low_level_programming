@@ -1,0 +1,141 @@
+#include <fcntl.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <elf.h>
+
+
+typedef struct elf_data {
+	unsigned int Magic[4];
+	unsigned int Class;
+	unsigned int Data;
+	unsigned int Version;
+	unsigned int OS_ABI;
+	unsigned int ABI_Version;
+	unsigned int Type;
+	unsigned int EntryAdrr;
+} elf;
+
+void printHeaderFromMagic(elf *elf_data);
+void printType(unsigned int type);
+void printOS_ABI(unsigned int os);
+void parseElfStruct(elf *elf_data, char *buffer);
+
+int main (int argc, char **argv)
+{
+	int fd, offset, i;
+	char buffer[1024];
+	elf elf_data;
+
+	if (argc != 2)
+	{
+		dprintf(2, "Usage: elf_header elf_filename\n");
+		exit(97);
+	}
+	fd = open(argv[1], O_RDONLY);
+	lseek(fd, 0, SEEK_SET);
+	read(fd, buffer, 1024);
+
+	parseElfStruct(&elf_data, buffer);
+	printHeaderFromMagic(&elf_data);
+	close(fd);
+}
+
+/**
+ * printHeaderFromMagic - prints the header info based on elf_data
+ * @magic: elf struct
+ * Return: void
+ */
+void printHeaderFromMagic(elf *elf_data)
+{
+	char *OS;
+
+	/* TODO: fill other fields */
+	/* printing Class */
+	printf("  Class:                             %s\n", elf_data->Class == 2 ? "ELF64" : "ELF32");
+	/* printing Data */
+	printf("  Data:                              2's complement, %s\n",
+																							elf_data->Data == 1 ? "little endian" : "big endian");
+	/* printing Version */
+	printf("  Version:                           %s\n", elf_data->Version == 1 ? "1 (current)" : "0 (invalid)");
+	/* printing OS/ABI */
+	printOS_ABI(elf_data->OS_ABI);
+	/* printing ABI Version */
+	printf("  ABI Version:                       %d\n", elf_data->ABI_Version);
+	printType(elf_data->Type);
+	/* printing Entry point */
+	printf("  Entry point address:               0x%x\n", elf_data->EntryAdrr);
+
+}
+
+void printOS_ABI(unsigned int os)
+{
+	switch (os)
+	{
+		case 0:
+			printf("  OS/ABI:                            %s\n", "UNIX - System V");
+			break;
+		case 2:
+			printf("  OS/ABI:                            %s\n", "UNIX - NetBSD");
+			break;
+		case 6:
+			printf("  OS/ABI:                            %s\n", "UNIX - Solaris");
+			break;
+		default:
+			printf("  OS/ABI:                            <unknown: %d>", os);
+	}
+}
+
+void printType(unsigned int type)
+{
+	/*
+	 * EXEC (Executable file)
+	 * DYN (Shared object file)
+	 */
+	switch (type)
+	{
+		case 2:
+			printf("  Type:                              %s\n", "EXEC (Executable file)");
+			break;
+		case 3:
+			printf("  Type:                              %s\n", "DYN (Shared object file)");
+			break;
+	}
+}
+
+void parseElfStruct(elf *elf_data, char *buffer)
+{
+	/* it's better to print magic here */
+	printf("ELF Header:\n  Magic:   %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
+																														buffer[0], buffer[1], buffer[2], buffer[3], buffer[4],
+																														buffer[5], buffer[6], buffer[7], buffer[8], buffer[9],
+																														buffer[10], buffer[11], buffer[12], buffer[13], buffer[14],
+																														buffer[15]);
+	/* parsing magic */
+	elf_data->Magic[0] = buffer[0];
+	elf_data->Magic[1] = buffer[1];
+	elf_data->Magic[2] = buffer[2];
+	elf_data->Magic[3] = buffer[3];
+	elf_data->Class = buffer[4];
+	elf_data->Data = buffer[5];
+	elf_data->Version = buffer[6];
+	elf_data->OS_ABI = buffer[7];
+	elf_data->ABI_Version = buffer[8];
+	elf_data->Type = buffer[16];
+	/* TODO: fix this */
+	elf_data->EntryAdrr = buffer[24];
+}
+
+/*
+ * infos needed to be encoded:
+ * - Magic [x]
+ * - Class [x]
+ * - Data [x] -> 01 = little endian; 02 = big endian
+ * - Version [x] -> current if 01; undefined if 02 (here is alwayse current)
+ * - OS/ABI [x]
+ * - ABI Version [x]
+ * - Type [x] 17 offset
+ * - Entry point address [ ]
+ */
