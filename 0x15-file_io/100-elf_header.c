@@ -7,7 +7,8 @@
 #include <elf.h>
 
 
-typedef struct elf_data {
+typedef struct elf_data
+{
 	unsigned int Magic[4];
 	unsigned int Class;
 	unsigned int Data;
@@ -23,9 +24,9 @@ void printType(unsigned int type);
 void printOS_ABI(unsigned int os);
 void parseElfStruct(elf *elf_data, char *buffer);
 
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int fd, offset, i;
+	int fd;
 	char buffer[1024];
 	elf elf_data;
 
@@ -41,6 +42,7 @@ int main (int argc, char **argv)
 	parseElfStruct(&elf_data, buffer);
 	printHeaderFromMagic(&elf_data);
 	close(fd);
+	return (0);
 }
 
 /**
@@ -50,16 +52,16 @@ int main (int argc, char **argv)
  */
 void printHeaderFromMagic(elf *elf_data)
 {
-	char *OS;
-
 	/* TODO: fill other fields */
 	/* printing Class */
-	printf("  Class:                             %s\n", elf_data->Class == 2 ? "ELF64" : "ELF32");
+	printf("  Class:                             %s\n",
+					elf_data->Class == 2 ? "ELF64" : "ELF32");
 	/* printing Data */
 	printf("  Data:                              2's complement, %s\n",
 																							elf_data->Data == 1 ? "little endian" : "big endian");
 	/* printing Version */
-	printf("  Version:                           %s\n", elf_data->Version == 1 ? "1 (current)" : "0 (invalid)");
+	printf("  Version:                           %s\n",
+			elf_data->Version == 1 ? "1 (current)" : "0 (invalid)");
 	/* printing OS/ABI */
 	printOS_ABI(elf_data->OS_ABI);
 	/* printing ABI Version */
@@ -97,10 +99,12 @@ void printType(unsigned int type)
 	switch (type)
 	{
 		case 2:
-			printf("  Type:                              %s\n", "EXEC (Executable file)");
+			printf("  Type:                              %s\n",
+					"EXEC (Executable file)");
 			break;
 		case 3:
-			printf("  Type:                              %s\n", "DYN (Shared object file)");
+			printf("  Type:                              %s\n",
+					"DYN (Shared object file)");
 			break;
 	}
 }
@@ -109,10 +113,10 @@ void parseElfStruct(elf *elf_data, char *buffer)
 {
 	/* it's better to print magic here */
 	printf("ELF Header:\n  Magic:   %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
-																														buffer[0], buffer[1], buffer[2], buffer[3], buffer[4],
-																														buffer[5], buffer[6], buffer[7], buffer[8], buffer[9],
-																														buffer[10], buffer[11], buffer[12], buffer[13], buffer[14],
-																														buffer[15]);
+				buffer[0], buffer[1], buffer[2], buffer[3], buffer[4],
+				buffer[5], buffer[6], buffer[7], buffer[8], buffer[9],
+				buffer[10], buffer[11], buffer[12], buffer[13], buffer[14],
+				buffer[15]);
 	/* parsing magic */
 	elf_data->Magic[0] = buffer[0];
 	elf_data->Magic[1] = buffer[1];
