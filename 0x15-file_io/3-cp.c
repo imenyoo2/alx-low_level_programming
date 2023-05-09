@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/stat.h>
 
 int copy(int from, int to);
 
@@ -16,13 +17,15 @@ int main(int argc, char **argv)
 {
 	int file_from, file_to;
 	int check;
+	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	if (argc != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	umask(0);
+	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, mode);
 	if (file_to == -1)
 	{
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
