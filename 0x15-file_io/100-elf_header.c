@@ -54,9 +54,15 @@ int main(int argc, char **argv)
 		exit(97);
 	}
 	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		exit(98);
+	}
 	lseek(fd, 0, SEEK_SET);
-	read(fd, buffer, 1024);
-
+	if (read(fd, buffer, 1024) == -1)
+	{
+		exit(98);
+	}
 	checkELF(buffer);
 	parseElfStruct(&elf_data, buffer);
 	printHeaderFromMagic(&elf_data);
