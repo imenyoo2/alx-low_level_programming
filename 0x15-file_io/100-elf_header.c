@@ -162,7 +162,6 @@ void parseElfStruct(elf *elf_data, char *buffer)
 	elf_data->ABI_Version = buffer[8];
 	elf_data->Type = buffer[16];
 	/* TODO: fix this */
-	printf("blabla");
 	elf_data->EntryAdrr = *((unsigned int *) (buffer + 24));
 #if 0
 	elf_data->EntryAdrr = buffer[23];
