@@ -34,6 +34,7 @@ void printHeaderFromMagic(elf *elf_data);
 void printType(unsigned int type);
 void printOS_ABI(unsigned int os);
 void parseElfStruct(elf *elf_data, char *buffer);
+void checkELF(char *buffer);
 
 /**
  * main - entry point
@@ -56,6 +57,7 @@ int main(int argc, char **argv)
 	lseek(fd, 0, SEEK_SET);
 	read(fd, buffer, 1024);
 
+	checkELF(buffer);
 	parseElfStruct(&elf_data, buffer);
 	printHeaderFromMagic(&elf_data);
 	close(fd);
@@ -176,6 +178,22 @@ void parseElfStruct(elf *elf_data, char *buffer)
 	elf_data->EntryAdrr += buffer[24];
 	printf("%x\n", elf_data->EntryAdrr);
 #endif
+}
+
+/**
+ * checkELF - checks if the file is an ELF file and quite if not
+ * @buffer: content of the file
+ * Return: void
+ */
+void checkELF(char *buffer)
+{
+	if (buffer[0] != 0x7f ||
+			buffer[1] != 0x45 ||
+			buffer[2] != 0x4c ||
+			buffer[3] != 0x46)
+	{
+		exit(98);
+	}
 }
 
 /*
