@@ -5,30 +5,9 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <elf.h>
+#include "main.h"
 
 
-/**
- * struct elf_data - holds the data needed
- * @Magic: the magic number
- * @Class: class number
- * @Data: data number
- * @Version: Version number
- * @OS_ABI: OS_ABI number
- * @Type: Type number
- * @EntryAdrr: Entry Address
- * @ABI_Version: ABI_Version Address
- */
-typedef struct elf_data
-{
-	unsigned int Magic[4];
-	unsigned int Class;
-	unsigned int Data;
-	unsigned int Version;
-	unsigned int OS_ABI;
-	unsigned int ABI_Version;
-	unsigned int Type;
-	unsigned int EntryAdrr;
-} elf;
 
 void printHeaderFromMagic(elf *elf_data);
 void printType(unsigned int type);
@@ -155,9 +134,11 @@ void printType(unsigned int type)
 void parseElfStruct(elf *elf_data, char *buffer)
 {
 	/* it's better to print magic here */
-	printf("ELF Header:\n  Magic:   %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
+	printf("ELF Header:\n  Magic:   %02x %02x %02x %02x %02x %02x ",
 				buffer[0], buffer[1], buffer[2], buffer[3], buffer[4],
-				buffer[5], buffer[6], buffer[7], buffer[8], buffer[9],
+				buffer[5]);
+	printf("%02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
+				buffer[6], buffer[7], buffer[8], buffer[9],
 				buffer[10], buffer[11], buffer[12], buffer[13], buffer[14],
 				buffer[15]);
 	/* parsing magic */
