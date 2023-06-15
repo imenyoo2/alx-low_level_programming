@@ -2,7 +2,7 @@
 
 
 /**
- * print_dlistint - prints a doubled list
+ * dlistint_len - get size of a double list
  * @h: head of the list
  * Return: size of the list
  */
