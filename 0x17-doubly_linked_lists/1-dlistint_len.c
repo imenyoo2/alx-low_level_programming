@@ -14,6 +14,7 @@ size_t dlistint_len(const dlistint_t *h)
 	while (buffer)
 	{
 		count++;
+		buffer = buffer->next;
 	}
 	return (count);
 }
