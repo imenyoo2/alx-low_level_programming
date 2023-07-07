@@ -12,10 +12,10 @@ hash_table_t *hash_table_create(unsigned long int size)
 	hash_node_t **array = malloc(sizeof(hash_node_t *) * size);
 
 	if (new == NULL || array == NULL)
-		return NULL;
+		return (NULL);
 
 	new->size = size;
 	new->array = array;
 
-	return new;
+	return (new);
 }
