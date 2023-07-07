@@ -21,9 +21,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		buffer = ht->array[index];
-		while (buffer->next)
-			buffer = buffer->next;
-		buffer->next = new;
+		new->next = buffer;
+		ht->array[index] = new;
 	}
 	return (1);
 }
