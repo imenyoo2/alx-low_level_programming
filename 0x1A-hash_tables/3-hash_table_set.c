@@ -16,13 +16,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new->value = strdup(value);
 	new->next = NULL;
 
-	if (ht->array[index] == NULL)
+	if ((ht->array)[index] == NULL)
 		ht->array[index] = new;
 	else
 	{
-		buffer = ht->array[index];
+		buffer = (ht->array)[index];
 		new->next = buffer;
-		ht->array[index] = new;
+		(ht->array)[index] = new;
 	}
 	return (1);
 }
