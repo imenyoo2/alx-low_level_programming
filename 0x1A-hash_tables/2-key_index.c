@@ -10,5 +10,8 @@ unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
 	unsigned long int mask = size / 2 - 1;
 
+	if (size == 0)
+		mask = 0;
+
 	return (hash_djb2(key) & mask);
 }

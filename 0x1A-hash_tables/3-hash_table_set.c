@@ -1,4 +1,5 @@
 #include "hash_tables.h"
+#include <stdio.h>
 
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
@@ -12,6 +13,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	index = key_index((unsigned const char *) key, ht->size);
+	printf("%u\n", index);
 	new->key = strdup(key);
 	new->value = strdup(value);
 	new->next = NULL;
