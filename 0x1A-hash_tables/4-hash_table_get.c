@@ -17,7 +17,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	while (buffer)
 	{
-		if (buffer->key == key)
+		if ((const char *)buffer->key == key)
 			return (buffer->value);
 		buffer = buffer->next;
 	}
