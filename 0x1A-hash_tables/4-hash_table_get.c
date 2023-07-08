@@ -16,7 +16,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		return (NULL);
 	}
 	index = key_index((const unsigned char *)key, ht->size);
-	if ((long unsigned int)index >= ht->size)
+	if ((unsigned long int)index >= ht->size)
 		return (NULL);
 
 	buffer = (ht->array)[index];
