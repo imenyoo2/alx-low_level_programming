@@ -1,5 +1,11 @@
 #include "hash_tables.h"
 
+/**
+ * hash_table_get - returns the value of key in ht
+ * @ht: the hash table
+ * @key: key to be searched
+ * Return: value corresponds to key or NULL
+ */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	int index;
