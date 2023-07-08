@@ -1,6 +1,13 @@
 #include "hash_tables.h"
 
 
+/**
+ * hash_table_set - set a new node to the hash table
+ * @ht: the hash table to be set
+ * @key: key of new node
+ * @value: value of new node
+ * Return: 1 if succeed, otherwise 0
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *new = malloc(sizeof(hash_node_t));
