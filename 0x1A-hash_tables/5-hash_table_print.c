@@ -17,11 +17,11 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			if (first)
 			{
-				printf("%s: %s", buffer->key, buffer->value);
+				printf("'%s': '%s'", buffer->key, buffer->value);
 				first = 0;
 			}
 			else
-				printf(", %s: %s", buffer->key, buffer->value);
+				printf(", '%s': '%s'", buffer->key, buffer->value);
 			buffer = buffer->next;
 		}
 	}
