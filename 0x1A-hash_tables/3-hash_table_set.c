@@ -19,7 +19,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new->next = NULL;
 
 	if ((ht->array)[index] == NULL)
-		ht->array[index] = new;
+		(ht->array)[index] = new;
 	else
 	{
 		buffer = (ht->array)[index];
