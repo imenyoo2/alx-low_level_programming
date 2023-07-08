@@ -19,6 +19,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	index = key_index((unsigned const char *) key, ht->size);
+	if ((unsigned long int) index >= ht->size)
+		return (0);
 	new->key = strdup(key);
 	if (new->key == NULL)
 		return (0);
