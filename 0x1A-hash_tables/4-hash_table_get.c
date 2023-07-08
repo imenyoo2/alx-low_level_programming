@@ -3,6 +3,7 @@
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	int index;
+	hash_node_t *buffer;
 
 	if (key == NULL || *key == '\0' || ht == NULL)
 	{
@@ -12,8 +13,14 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if ((long unsigned int)index >= ht->size)
 		return (NULL);
 
-	if ((ht->array)[index] == NULL)
-		return (NULL);
+	buffer = (ht->array)[index];
 
-	return ((ht->array)[index]->value);
+	while (buffer)
+	{
+		if (buffer->key == key)
+			return (buffer->value);
+		buffer = buffer->next;
+	}
+
+	return (NULL);
 }
