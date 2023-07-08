@@ -13,7 +13,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((unsigned const char *) key, ht->size);
 	new->key = strdup(key);
+	if (new->key == NULL)
+		return (0);
 	new->value = strdup(value);
+	if (new->value == NULL)
+		return (0);
 	new->next = NULL;
 
 	if ((ht->array)[index] == NULL)
