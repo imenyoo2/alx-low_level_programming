@@ -149,7 +149,7 @@ void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *buffer;
 	int first = 1;
-	
+
 	if (ht == NULL)
 		return;
 
@@ -171,7 +171,7 @@ void shash_table_print(const shash_table_t *ht)
 }
 
 /**
- * shash_table_print - prints the hash table in reverse order
+ * shash_table_print_rev - prints the hash table in reverse order
  * @ht: the hash table
  * Return: void
  */
@@ -179,7 +179,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *buffer;
 	int first = 1;
-	
+
 	if (ht == NULL)
 		return;
 
