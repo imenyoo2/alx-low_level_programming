@@ -90,7 +90,7 @@ void order_node(shash_table_t *ht, shash_node_t *node)
 	{
 		while (buffer)
 		{
-			if (strcmp(node->key, buffer->key) < 0)
+			if (strcmp(node->key, buffer->key) <= 0)
 			{
 				node->snext = buffer;
 				node->sprev  = buffer->sprev;
